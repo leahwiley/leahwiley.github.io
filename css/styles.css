@@ -1,0 +1,36 @@
+// https://github.com/briancribb/mobile-tester
+.container {
+	max-width: 800px!important;
+}
+.scroll-test {
+	max-height: 200px!important;
+	overflow: hidden;
+	border: 1px solid #000;
+	padding: 10px;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.navbar-nav li a:hover,
+.nav-pills li:hover,
+.nav-pills li a:hover,
+.dropdown-menu li a:hover {
+	color: #fff;
+	background-color: #080808;
+	background-image: none;
+	background-repeat: none;
+}
+
+.nav-pills .dropdown-menu {
+	margin-top:-2px;
+}
+
+.navbar-nav li:hover .dropdown-menu, .nav-pills li:hover .dropdown-menu {
+	display:block;
+}
+
+.webkit-scroll-touch {
+	-webkit-overflow-scrolling: touch;
+}
+.webkit-scroll-auto {
+	-webkit-overflow-scrolling: auto;
+}
