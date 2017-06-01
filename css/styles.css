@@ -1,4 +1,7 @@
 // https://github.com/briancribb/mobile-tester
+body {
+	padding-top: 50px;
+}
 .container {
 	max-width: 800px!important;
 }
