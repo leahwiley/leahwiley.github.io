@@ -1,5 +1,5 @@
 /*   https://github.com/briancribb/mobile-tester */
-(function(){
+(function(){ return false;
 
 var timeoutID,
 	pageCanScroll = true;
