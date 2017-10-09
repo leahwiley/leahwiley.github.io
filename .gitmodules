@@ -1,3 +1,3 @@
 [submodule "pelorJs"]
-	path = pelorJs
+	path = pelorjs
 	url = https://github.com/nathanielwiley/pelorJs
