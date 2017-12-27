@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang-"en">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,11 +17,11 @@
 	</head>
 	<body>
 		<div id="summit" class="w3-top w3-theme-d4"><div class="w3-bar">
-			<a href="#" class="w3-bar-item w3-button w3-theme w3-mobile"><i class="fa fa-home"></i></a>
-			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-search"></i></a>
-			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i></a>
-			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-globe"></i></a>
-			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-sign-in"></i></a>
+			<a href="#" class="w3-bar-item w3-button w3-theme w3-mobile"><i class="fa fa-home"></i>Home</a>
+			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-search"></i>Search</a>
+			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i>Mail</a>
+			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-globe"></i>Places</a>
+			<a href="#" class="w3-bar-item w3-button w3-mobile"><i class="fa fa-sign-in"></i>Loggins</a>
 		</div></div><br /><br />
 		<div class="w3-container">
 			<div class="w3-container w3-text-theme"><h1>Nathaniel Wiley GitHub User Page</h1></div>
@@ -30,7 +30,7 @@
 				<div class="card-header"><div class="form-group row">
 					<label for="cmdI" class="col-2 col-form-label">rngine.js CLI</label>
 					<div class="col-10">
-						<input class="form-control" type="text" value="" placeholder="_" name="cmdI" id="cmdI">
+						<input class="form-control" auw3-filter-html=".w3-ul,li;#summit,a" type="text" value="" placeholder="_" name="cmdI" id="cmdI">
 					</div> 
 				</div></div>
 				<div class="card-block" id="cmdO"></div>
@@ -45,11 +45,25 @@
 
 			<ul class="w3-ul w3-border-top">
 				<li class="w3-theme-l5">
-					<a class="w3-button w3-xlarge w3-circle w3-theme-action AUW3-closer" style="position:fixed;top:48px;right:24px;">+</a>
+					<a class="w3-button w3-xlarge w3-circle w3-theme-action"
+						auw3-hide="li.w3-theme-l5"
+						auw3-show="#bling"
+						auw3-toggle-show="li.w3-theme-d2"
+						auw3-style="h2,background-color,red;.w3-container,background-color,#bada55"
+						auw3-toggle-class="#bling,fa-spin w3-theme-dark,fa-pulse" 
+						style="position:fixed;top:48px;right:24px;"
+					>+</a>
 					<p>w3-theme-l5 (w3-theme-light)</p>
 				</li>
-				<li class="w3-theme-l4"><p>w3-theme-l4</p></li>
-				<li class="w3-theme-l3"><p>w3-theme-l3</p></li>
+				<li class="w3-theme-l4">
+					<a id="bling" class="w3-button w3-xlarge w3-circle w3-theme-l3" 
+						auw3-hide="#bling"
+						auw3-show="li.w3-theme-l5" 
+						style="position:fixed;top:96px;right:24px;"
+					>+</a>
+					<p>w3-theme-l4</p>
+				</li>
+				<li class="w3-theme-l3" auw3-hide="oh crumbs"><p>w3-theme-l3</p></li>
 				<li class="w3-theme-l2"><p>w3-theme-l2</p></li>
 				<li class="w3-theme-l1"><p>w3-theme-l1</p></li>
 				<li class="w3-theme"><p>w3-theme</p></li>
@@ -79,9 +93,10 @@
 		<!-- Wiley JS
 		================================================== -->
 		<!--<script src="../conpigurator/conpigurator.js"></script>-->
-		<script src="../AUW3/AUW3.js"></script>
+		<script src="../bittacle/bittacle.js"></script>
+		<script src="../AUW3/auw3.js"></script>
 		<script src="js/wks.min.js"></script>
-		<script src="js/scripts.min.js"></script>
+		<!--<script src="js/scripts.min.js"></script>-->
 	</body>
 </html>
 <!--
