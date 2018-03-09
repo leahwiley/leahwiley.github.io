@@ -16,109 +16,13 @@
 		<script src="https://use.fontawesome.com/1174070f0b.js"></script>
 	</head>
 	<body>
-		<div id="summit" class="w3-top w3-theme-d4"><div class="w3-bar">
-			<a href="#" class="AuW3-auto-slide w3-bar-item w3-button w3-theme w3-mobile"><i class="fa fa-home"></i>Home</a>
-			<a href="#" class="AuW3-auto-slide w3-bar-item w3-button w3-mobile"><i class="fa fa-search"></i>Search</a>
-			<a href="#" class="AuW3-auto-slide w3-bar-item w3-button w3-mobile"><i class="fa fa-envelope"></i>Mail</a>
-			<a href="#" class="AuW3-auto-slide w3-bar-item w3-button w3-mobile"><i class="fa fa-globe"></i>Places</a>
-			<a href="#" class="AuW3-auto-slide w3-bar-item w3-button w3-mobile"><i class="fa fa-sign-in"></i>Loggins</a>
-		</div></div><br /><br />
-		<div class="w3-container">
-			<div class="w3-container w3-text-theme" auw3-sort-html="#summit,a.w3-bar-item"><h1>Nathaniel Wiley GitHub User Page</h1></div>
+		<div id="headerInc" w3-include-html="inc/header.html"><a href="inc/header.html" target="_blank">check include</a></div>
 
-			<div class="card">
-				<div class="card-header"><div class="form-group row">
-					<label for="cmdI" class="col-2 col-form-label">rngine.js CLI</label>
-					<div class="col-10">
-						<!--auw3-filter-html=".w3-ul,li;#summit,a"-->
-						<input class="form-control" auw3-slide-speed=".AuW3-auto-slide" type="text" value="" placeholder="_" name="cmdI" id="cmdI">
-					</div> 
-				</div></div>
-				<div class="card-block" id="cmdO"></div>
-			</div>
-
-		</div><!-- /.w3-container -->
-<p id="conpigurateMe">Target</p>
-<input id="conpigurateU" type="text">
-
-		<div class="w3-card-4">
-			<!--<div class="w3-container w3-theme w3-card"><h1>Amber</h1></div>-->
-
-			<div class="w3-container w3-text-theme"><h2>w3-text-theme</h2></div>
-
-			<ul class="w3-ul w3-border-top">
-				<li class="w3-theme-l5">
-					<a class="w3-button w3-xlarge w3-circle w3-theme-action"
-						auw3-hide="li.w3-theme-l5"
-						auw3-show="#bling"
-						auw3-toggle-show="li.w3-theme-d2"
-						auw3-style="h2,background-color,red;.w3-container,background-color,#bada55"
-						auw3-toggle-class="#bling,fa-spin w3-theme-dark,fa-pulse" 
-						style="position:fixed;top:48px;right:24px;"
-					>+</a>
-					<p>w3-theme-l5 (w3-theme-light)</p>
-				</li>
-				<li class="w3-theme-l4">
-					<a id="bling" class="w3-button w3-xlarge w3-circle w3-theme-l3" 
-						auw3-hide="#bling"
-						auw3-show="li.w3-theme-l5" 
-						style="position:fixed;top:96px;right:24px;"
-					>+</a>
-					<p>w3-theme-l4</p>
-				</li>
-				<li class="w3-theme-l3" auw3-hide="oh crumbs"><p>w3-theme-l3</p></li>
-				<li class="w3-theme-l2"><p>w3-theme-l2</p></li>
-				<li class="w3-theme-l1"><p>w3-theme-l1</p></li>
-				<li class="w3-theme"><p>w3-theme</p></li>
-				<li class="w3-theme-d1"><p>w3-theme-d1</p></li>
-				<li class="w3-theme-d2"><p>w3-theme-d2</p></li>
-				<li class="w3-theme-d3"><p>w3-theme-d3</p></li>
-				<li class="w3-theme-d4"><p>w3-theme-d4</p></li>
-				<li class="w3-theme-d5"><p>w3-theme-d5 (w3-theme-dark)</p></li>
-			</ul>
-		</div><br /><br />
-
-		<footer class="w3-container w3-theme-dark w3-bottom">
-			<!--<h3>Footer</h3>-->
-			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://www.w3schools.com/w3js/" target="_blank">W3.JS</a></p>
-			<p auw3-slide-stop=".AuW3-auto-slide">STOP</p>
-			<p auw3-slide-start=".AuW3-auto-slide">GO</p>
-			<p auw3-slide-speed=".AuW3-auto-slide,1000">ACCELERATE</p>
-			<p auw3-slide-next=".AuW3-auto-slide">FOREWARD</p>
-			<p auw3-slide-previous=".AuW3-auto-slide">BACK</p>
-			<p auw3-slide-set=".AuW3-auto-slide,4">Slide 4</p>
-			<!--<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
-				<span class="w3-text w3-padding">Go To Top</span>&nbsp;   
-				<a class="w3-text-white" href="#summit"><span class="w3-xlarge">
-				<i class="fa fa-chevron-circle-up"></i></span></a>
-			</div>-->
-		</footer>
+		<div id="footerInc" w3-include-html="inc/footer.html"><a href="inc/footer.html" target="_blank">check include</a></div>
 	
-		<!-- jQuery and W3.JS JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 		<script src="https://www.w3schools.com/lib/w3.js"></script>
-		<!-- Wiley JS
-		================================================== -->
-		<script src="../conpigurator/conpigurator.js"></script>
-		<script src="../bittacle/bittacle.js"></script>
-		<script src="../AUW3/auw3.js"></script>
-		<script src="js/wks.min.js"></script>
-		<!--<script src="js/scripts.min.js"></script>-->
-		<script>
-	// CONSTRUCTOR with chained target assignment
-	var myConpigurator = new Conpigurator('conpigurateU')
-		.addTarget('conpigurateMe','backgroundColor')
-		.addTarget('conpigurateMe2','color');
-	
-	// Explicit target assignment
-	myConpigurator.addTarget('conpigurateMe3','{CSS color property}');
-	
-	// Manual trigger application of myConpigurator color to targets
-	myConpigurator.update();
-</script>
+		<script src="../AuW3/auw3.js"></script>
+		<!--<script src="js/wks.min.js"></script>-->
+		<script></script>
 	</body>
 </html>
-<!--
--->
