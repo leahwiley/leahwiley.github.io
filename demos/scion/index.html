@@ -19,7 +19,29 @@
 		<div id="headerInc" w3-include-html="../../inc/header.html"><a href="../../inc/header.html" target="_blank">check include</a></div>
 
 		<div id="spcgapp">
-			{{ r }}
+			<p>Resonance: {{ r }}</p>
+			<div>Energy: 
+				<span class="w3-badge w3-red">{{ e.r }}</span>
+				<span class="w3-badge w3-orange">{{ e.o }}</span>
+				<span class="w3-badge w3-yellow">{{ e.y }}</span>
+				<span class="w3-badge w3-green">{{ e.g }}</span>
+				<span class="w3-badge w3-teal">{{ e.t }}</span>
+				<span class="w3-badge w3-blue">{{ e.b }}</span>
+				<span class="w3-badge w3-indigo">{{ e.i }}</span>
+				<span class="w3-badge w3-purple">{{ e.v }}</span>
+				<span class="w3-badge w3-pink">{{ e.p }}</span>
+			</div>
+			<div>Fleet: 
+				<span class="w3-badge w3-red">{{ f.r }}</span>
+				<span class="w3-badge w3-orange">{{ f.o }}</span>
+				<span class="w3-badge w3-yellow">{{ f.y }}</span>
+				<span class="w3-badge w3-green">{{ f.g }}</span>
+				<span class="w3-badge w3-teal">{{ f.t }}</span>
+				<span class="w3-badge w3-blue">{{ f.b }}</span>
+				<span class="w3-badge w3-indigo">{{ f.i }}</span>
+				<span class="w3-badge w3-purple">{{ f.v }}</span>
+				<span class="w3-badge w3-pink">{{ f.p }}</span>
+			</div>
 		</div>
 
 		<div id="footerInc" w3-include-html="../../inc/footer.html"><a href="../../inc/footer.html" target="_blank">check include</a></div>
@@ -33,10 +55,11 @@
 			var spcg = new Vue({
 				el:'#spcgapp',
 				data:{
+					t:0,// turn count
 					r:81,// starting resonance
 					o:81,// orbit size
-					e:{r:1,o:1,g:1,t:1,b:1,i:1,v:1,p:1},// energy
-					f:{r:1,o:1,g:1,t:1,b:1,i:1,v:1,p:1},// fleet
+					e:{r:1,o:1,y:1,g:1,t:1,b:1,i:1,v:1,p:1},// energy
+					f:{r:1,o:1,y:1,g:1,t:1,b:1,i:1,v:1,p:1},// fleet
 					p:[]
 				}
 			});
