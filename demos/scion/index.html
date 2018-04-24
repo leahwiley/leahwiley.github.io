@@ -21,26 +21,10 @@
 		<div id="spcgapp">
 			<p>Resonance: {{ r }}</p>
 			<div>Energy: 
-				<span class="w3-badge w3-red">{{ e.r }}</span>
-				<span class="w3-badge w3-orange">{{ e.o }}</span>
-				<span class="w3-badge w3-yellow">{{ e.y }}</span>
-				<span class="w3-badge w3-green">{{ e.g }}</span>
-				<span class="w3-badge w3-teal">{{ e.t }}</span>
-				<span class="w3-badge w3-blue">{{ e.b }}</span>
-				<span class="w3-badge w3-indigo">{{ e.i }}</span>
-				<span class="w3-badge w3-purple">{{ e.v }}</span>
-				<span class="w3-badge w3-pink">{{ e.p }}</span>
+				<span v-for="state in state" v-bind:class="state.w3">{{ state.e }}</span> 
 			</div>
 			<div>Fleet: 
-				<span class="w3-badge w3-red">{{ f.r }}</span>
-				<span class="w3-badge w3-orange">{{ f.o }}</span>
-				<span class="w3-badge w3-yellow">{{ f.y }}</span>
-				<span class="w3-badge w3-green">{{ f.g }}</span>
-				<span class="w3-badge w3-teal">{{ f.t }}</span>
-				<span class="w3-badge w3-blue">{{ f.b }}</span>
-				<span class="w3-badge w3-indigo">{{ f.i }}</span>
-				<span class="w3-badge w3-purple">{{ f.v }}</span>
-				<span class="w3-badge w3-pink">{{ f.p }}</span>
+				<span v-for="state in state" v-bind:class="state.w3">{{ state.f }}</span> 
 			</div>
 		</div>
 
@@ -52,17 +36,34 @@
 		<script src="../../../AuW3/auw3.js"></script>
 		<!--<script src="js/wks.min.js"></script>-->
 		<script>
-			var spcg = new Vue({
-				el:'#spcgapp',
-				data:{
-					t:0,// turn count
-					r:81,// starting resonance
-					o:81,// orbit size
-					e:{r:1,o:1,y:1,g:1,t:1,b:1,i:1,v:1,p:1},// energy
-					f:{r:1,o:1,y:1,g:1,t:1,b:1,i:1,v:1,p:1},// fleet
-					p:[]
-				}
-			});
+			var spcg = function(){
+				var spcgVue = new Vue({
+					el:'#spcgapp',
+					data:{
+						t:0,// turn count
+						r:81,// starting resonance
+						o:81,// orbit size
+						state:{
+							r:{e:1,f:1,w3:{'w3-red':true,'w3-badge':true}},
+							o:{e:1,f:1,w3:{'w3-orange':true,'w3-badge':true}},
+							y:{e:1,f:1,w3:{'w3-yellow':true,'w3-badge':true}},
+							g:{e:1,f:1,w3:{'w3-green':true,'w3-badge':true}},
+							t:{e:1,f:1,w3:{'w3-teal':true,'w3-badge':true}},
+							b:{e:1,f:1,w3:{'w3-blue':true,'w3-badge':true}},
+							i:{e:1,f:1,w3:{'w3-indigo':true,'w3-badge':true}},
+							v:{e:1,f:1,w3:{'w3-purple':true,'w3-badge':true}},
+							p:{e:1,f:1,w3:{'w3-pink':true,'w3-badge':true}}
+						},
+						e:{},// energy
+						f:{},// fleet
+						p:[]// players
+					}
+				});
+				var APP = {
+
+				};
+				return APP;
+			}();
 		</script>
 	</body>
 </html>
