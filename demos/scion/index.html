@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="SCION Procedural Card Game">
+		<meta name="author" content="Assembled Realities">
+		<!--<link rel="icon" href="../../favicon.ico">-->
+		
+		<title>SCION PCG</title>
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">
+		<script src="https://use.fontawesome.com/1174070f0b.js"></script>
+	</head>
+	<body>
+		<div id="headerInc" w3-include-html="../../inc/header.html"><a href="../../inc/header.html" target="_blank">check include</a></div>
+
+		<div id="spcgapp">
+			{{ r }}
+		</div>
+
+		<div id="footerInc" w3-include-html="../../inc/footer.html"><a href="../../inc/footer.html" target="_blank">check include</a></div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script src="https://www.w3schools.com/lib/w3.js"></script>
+		<script src="../../../AuW3/auw3.js"></script>
+		<!--<script src="js/wks.min.js"></script>-->
+		<script>
+			var spcg = new Vue({
+				el:'#spcgapp',
+				data:{
+					r:81,// starting resonance
+					o:81,// orbit size
+					e:{r:1,o:1,g:1,t:1,b:1,i:1,v:1,p:1},// energy
+					f:{r:1,o:1,g:1,t:1,b:1,i:1,v:1,p:1},// fleet
+					p:[]
+				}
+			});
+		</script>
+	</body>
+</html>
