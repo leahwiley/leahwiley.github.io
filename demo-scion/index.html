@@ -16,25 +16,23 @@
 		<script src="https://use.fontawesome.com/1174070f0b.js"></script>
 	</head>
 	<body>
-		<div id="headerInc" w3-include-html="../../inc/header.html"><a href="../../inc/header.html" target="_blank">check include</a></div>
-
 		<div id="spcgapp">
-			<p>Resonance: {{ r }}</p>
+			<p>Resonance: {{ r }}<br />Turns: {{ t }}</p>
 			<div>Energy: 
-				<span v-for="state in state" v-bind:class="state.w3">{{ state.e }}</span> 
+				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span> 
 			</div>
 			<div>Fleet: 
-				<span v-for="state in state" v-bind:class="state.w3">{{ state.f }}</span> 
+				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.f }}</span> 
 			</div>
 		</div>
 
-		<div id="footerInc" w3-include-html="../../inc/footer.html"><a href="../../inc/footer.html" target="_blank">check include</a></div>
+		<footer class="w3-container w3-theme-dark w3-bottom">
+			<!--<h3>Footer</h3>-->
+			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a>, <a href="https://github.com/nathanielwiley/AuW3" target="_blank">AuW3.JS</a></p>
+		</footer>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-		<script src="https://www.w3schools.com/lib/w3.js"></script>
-		<script src="../../../AuW3/auw3.js"></script>
-		<!--<script src="js/wks.min.js"></script>-->
 		<script>
 			var spcg = function(){
 				var spcgVue = new Vue({
@@ -44,23 +42,28 @@
 						r:81,// starting resonance
 						o:81,// orbit size
 						state:{
-							r:{e:1,f:1,w3:{'w3-red':true,'w3-badge':true}},
-							o:{e:1,f:1,w3:{'w3-orange':true,'w3-badge':true}},
-							y:{e:1,f:1,w3:{'w3-yellow':true,'w3-badge':true}},
-							g:{e:1,f:1,w3:{'w3-green':true,'w3-badge':true}},
-							t:{e:1,f:1,w3:{'w3-teal':true,'w3-badge':true}},
-							b:{e:1,f:1,w3:{'w3-blue':true,'w3-badge':true}},
-							i:{e:1,f:1,w3:{'w3-indigo':true,'w3-badge':true}},
-							v:{e:1,f:1,w3:{'w3-purple':true,'w3-badge':true}},
-							p:{e:1,f:1,w3:{'w3-pink':true,'w3-badge':true}}
+							r:{ID:'r',e:1,f:1,w3:'w3-red'},
+							o:{ID:'o',e:1,f:1,w3:'w3-orange'},
+							y:{ID:'y',e:1,f:1,w3:'w3-yellow'},
+							g:{ID:'g',e:1,f:1,w3:'w3-green'},
+							t:{ID:'t',e:1,f:1,w3:'w3-teal'},
+							b:{ID:'b',e:1,f:1,w3:'w3-blue'},
+							i:{ID:'i',e:1,f:1,w3:'w3-indigo'},
+							v:{ID:'v',e:1,f:1,w3:'w3-purple'},
+							p:{ID:'p',e:1,f:1,w3:'w3-pink'}
 						},
-						e:{},// energy
-						f:{},// fleet
 						p:[]// players
+					},
+					methods:{
+						getBadgeStyles:function(style){
+							var oW3 = {'w3-badge':true};
+							if(typeof(style) === 'string') oW3[style] = true;
+							return oW3;
+						}
 					}
 				});
 				var APP = {
-
+					
 				};
 				return APP;
 			}();
