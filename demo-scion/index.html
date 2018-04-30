@@ -17,18 +17,47 @@
 	</head>
 	<body>
 		<div id="spcgapp">
+			<div class="w3-row">
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l3 m3 s3"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+			</div>
+			<div class="w3-row">
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l8 m8 s8"></div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+			</div>
+			<div class="w3-row">
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l8 m8 s8"></div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+			</div>
+			<div class="w3-row">
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l8 m8 s8"></div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+			</div>
+			<div class="w3-row">
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l3 m3 s3"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+				<div class="w3-col l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
+			</div>
 			<p>Resonance: {{ r }}<br />Turns: {{ t }}</p>
 			<div>Energy: 
 				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span> 
 			</div>
 			<div>Fleet: 
-				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.f }}</span> 
+				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 			</div>
 		</div>
 
 		<footer class="w3-container w3-theme-dark w3-bottom">
 			<!--<h3>Footer</h3>-->
-			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a>, <a href="https://github.com/nathanielwiley/AuW3" target="_blank">AuW3.JS</a></p>
+			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a>
 		</footer>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -85,7 +114,7 @@
 						count++;
 					}
 					deck.draw = function(){
-						
+
 					}
 					return deck;
 				}
