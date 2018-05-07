@@ -17,51 +17,54 @@
 	</head>
 	<body>
 		<div id="spcgapp">
-			<div class="w3-display-container w3-black w3-padding" style="height:200px;">
-				<div class="w3-display-left w3-margin">
+			<div class="w3-round" @click="menu=true"><i class="fa fa-bars fa-2x"></i></div>
+			<div class="w3-display-container w3-black w3-padding" style="height:81vh;">
+				<div class="w3-display-left w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(0,12.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 				</div>
-				<div class="w3-display-topleft w3-margin">
+				<div class="w3-display-topleft w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(12.5,25)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-topmiddle w3-margin">
+				<div class="w3-display-topmiddle w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(25,37.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-topright w3-margin">
+				<div class="w3-display-topright w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(37.5,50)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-right w3-margin">
+				<div class="w3-display-right w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(50,62.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-bottomright w3-margin">
+				<div class="w3-display-bottomright w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(62.5,75)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-bottommiddle w3-margin">
+				<div class="w3-display-bottommiddle w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(75,87.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-bottomleft w3-margin">
+				<div class="w3-display-bottomleft w3-third w3-margin">
 					<span v-for="state in getFleetAtStation(87.5,100)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
-				<div class="w3-display-middle w3-container">
-					<p>Resonance: {{ r }}<br />Turns: {{ t }}</p>
+				<div class="w3-display-middle w3-third w3-container">
+					<p>Resonance: {{ r }}<br />Turns: {{ t }}<br />Orbits: {{ calculateOrbits() }}</p>
 				</div>
 			</div>
-			<h2>DEMO UI</h2>
-			<div>Energy: 
-				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span> 
+			<div class="w3-container w3-black w3-text-green w3-topbar w3-border-green">
+				<h2>DEBUG UI</h2>
+				<div>Energy: 
+					<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span> 
+				</div>
+				<div>Fleet (Click to Increase): 
+					<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)" style="cursor:pointer;" @click="incState(state.ID)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
 			</div>
-			<div>Fleet (Click to Increase): 
-				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)" style="cursor:pointer;" @click="incState(state.ID)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
-			</div>
+			<div v-bind:class="getMenuStyles()"><div class="modal-content"><div class="w3-container w3-theme-dark">
+				<span @click="menu=false" class="w3-button w3-display-topright">&times;</span>
+				<p><a href="https://docs.google.com/document/d/1ct_VRuUf-W8i1QK29MTigpQbY1nFh4G7XWI_VgxJt8E/edit?usp=sharing" target="_blank">Game Design Google Doc</a></p>
+				<p class="">Inspired by Friends at the Table season: Twilight Mirage <a href="http://friendsatthetable.net/" target="_blank">Podcast Site</a>, <a href="http://friendsatthetable.cash/" target="_blank">Support Friends at the Table</a>, <a href="http://twilightmirage.wikia.com/" target="_blank">Twilight Mirage Wiki</a></p>
+				<p class="">All rights to Friends at the Table, the Twilight Mirage, Divines, and Axioms belong to their creators!</p>
+				<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
+				<p class="">Developed by <a href="https://nathanielwiley.github.io" target="_blank">Assembled Realities</a>, 2018 Licensed under <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></p>
+			</div></div></div>
 		</div>
-
-		<footer class="w3-container w3-theme-dark w3-bottom">
-			<p><a href="https://docs.google.com/document/d/1ct_VRuUf-W8i1QK29MTigpQbY1nFh4G7XWI_VgxJt8E/edit?usp=sharing" target="_blank">Game Design Google Doc</a></p>
-			<p class="">Inspired by Friends at the Table season: Twilight Mirage <a href="http://friendsatthetable.net/" target="_blank">Podcast Site</a>, <a href="http://friendsatthetable.cash/" target="_blank">Support Friends at the Table</a>, <a href="http://twilightmirage.wikia.com/" target="_blank">Twilight Mirage Wiki</a></p>
-			<p class="">All rights to Friends at the Table, the Twilight Mirage, Divines, and Axioms belong to their creators!</p>
-			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
-			<p class="">Developed by <a href="https://nathanielwiley.github.io" target="_blank">Assembled Realities</a>, Licensed under <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></p>
-		</footer>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
@@ -70,10 +73,10 @@
 				var spcgVue = new Vue({
 					el:'#spcgapp',
 					data:{
+						menu:false,// show menu?
 						t:0,// turn count
 						r:81,// starting resonance
 						o:81,// orbit size
-						oc:0,// orbit count
 						state:{
 							r:{ID:'r',e:1,f:1,w3:'w3-red'},
 							o:{ID:'o',e:1,f:1,w3:'w3-orange'},
@@ -101,6 +104,11 @@
 								this.state[stateID].e--;
 							}
 						},
+						calculateOrbits:function(){
+							var pcg = this,oCount=0;
+							_.each(pcg.state,function(oState){oCount += oState.f;});
+							return Math.floor((oCount/9)/pcg.o);
+						},
 						getFleetAtStation:function(min,max){
 							if(!isNaN(min) && !isNaN(max)){
 								var pcg = this;
@@ -115,6 +123,15 @@
 						getBadgeStyles:function(style,score){
 							var oW3 = {'w3-badge':true};
 							if(typeof(style) === 'string') oW3[style] = true;
+							return oW3;
+						},
+						getMenuStyles:function(){
+							var oW3 = {'w3-modal':true};
+							if(this.menu){
+								oW3['w3-show'] = true;
+							} else {
+								oW3['w3-hide'] = true;
+							}
 							return oW3;
 						}
 					}
