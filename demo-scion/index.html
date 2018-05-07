@@ -14,17 +14,20 @@
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">
 		<script src="https://use.fontawesome.com/1174070f0b.js"></script>
+		<style>
+		.pcg--hud .w3-row {height: 18vh;}
+		</style>
 	</head>
 	<body>
 		<div id="spcgapp">
 			<div class="w3-round" @click="menu=true"><i class="fa fa-bars fa-2x"></i></div>
-			<div class="w3-container w3-black w3-padding" style="height:81vh;">
+			<div class="pcg--hud w3-container w3-deep-purple w3-padding">
 				<div class="w3-row"><!--- TOP --->
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(20,30)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s3 m3 l3">
+					<div class="w3-col s3 m3 l3 w3-right-align">
 						<span v-for="state in getFleetAtStation(30,40)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
@@ -33,10 +36,10 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(10,20)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6">
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar">
 						Resonance: {{ r }}
 					</div>
-					<div class="w3-col s3 m3 l3">
+					<div class="w3-col s3 m3 l3 w3-right-align">
 						&nbsp;<span v-for="state in getFleetAtStation(40,50)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
 				</div>
@@ -44,10 +47,10 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(0,10)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6">
-						Turns: {{ t }}
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar">Energy: 
+						<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span>
 					</div>
-					<div class="w3-col s3 m3 l3">
+					<div class="w3-col s3 m3 l3 w3-right-align">
 						&nbsp;<span v-for="state in getFleetAtStation(50,60)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
 				</div>
@@ -55,10 +58,10 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(90,100)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6">
-						Orbits: {{ calculateOrbits() }}
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar">
+						Turns: {{ t }} | Orbits: {{ calculateOrbits() }}
 					</div>
-					<div class="w3-col s3 m3 l3">
+					<div class="w3-col s3 m3 l3 w3-right-align">
 						&nbsp;<span v-for="state in getFleetAtStation(60,70)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
 				</div>
@@ -67,7 +70,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(80,90)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s3 m3 l3">
+					<div class="w3-col s3 m3 l3 w3-right-align">
 						&nbsp;<span v-for="state in getFleetAtStation(70,80)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
@@ -75,9 +78,6 @@
 			</div>
 			<div class="w3-container w3-black w3-text-green w3-topbar w3-border-green">
 				<h2>DEBUG UI</h2>
-				<div>Energy: 
-					<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span> 
-				</div>
 				<div>Fleet (Click to Increase): 
 					<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)" style="cursor:pointer;" @click="incState(state.ID)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
@@ -105,12 +105,12 @@
 						o:81,// orbit size
 						state:{
 							r:{ID:'r',e:1,f:1,w3:'w3-red'},
-							o:{ID:'o',e:1,f:15,w3:'w3-orange'},
-							y:{ID:'y',e:1,f:31,w3:'w3-yellow'},
-							g:{ID:'g',e:1,f:61,w3:'w3-green'},
-							t:{ID:'t',e:1,f:91,w3:'w3-teal'},
-							b:{ID:'b',e:1,f:41,w3:'w3-blue'},
-							i:{ID:'i',e:1,f:71,w3:'w3-indigo'},
+							o:{ID:'o',e:1,f:1,w3:'w3-orange'},
+							y:{ID:'y',e:1,f:1,w3:'w3-yellow'},
+							g:{ID:'g',e:1,f:1,w3:'w3-green'},
+							t:{ID:'t',e:1,f:1,w3:'w3-teal'},
+							b:{ID:'b',e:1,f:1,w3:'w3-blue'},
+							i:{ID:'i',e:1,f:1,w3:'w3-indigo'},
 							v:{ID:'v',e:1,f:1,w3:'w3-purple'},
 							p:{ID:'p',e:1,f:1,w3:'w3-pink'}
 						},
