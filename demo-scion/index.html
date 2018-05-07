@@ -9,7 +9,7 @@
 		<meta name="author" content="Assembled Realities">
 		<!--<link rel="icon" href="../../favicon.ico">-->
 		
-		<title>Procedural Card Game</title>
+		<title>Confluent Circuit - Procedural Card Game</title>
 
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">
@@ -17,48 +17,46 @@
 	</head>
 	<body>
 		<div id="spcgapp">
-			<div class="w3-container">
-
+			<div class="w3-display-container w3-black w3-padding" style="height:200px;">
+				<div class="w3-display-left w3-margin">
+					<span v-for="state in getFleetAtStation(0,12.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
+				</div>
+				<div class="w3-display-topleft w3-margin">
+					<span v-for="state in getFleetAtStation(12.5,25)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-topmiddle w3-margin">
+					<span v-for="state in getFleetAtStation(25,37.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-topright w3-margin">
+					<span v-for="state in getFleetAtStation(37.5,50)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-right w3-margin">
+					<span v-for="state in getFleetAtStation(50,62.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-bottomright w3-margin">
+					<span v-for="state in getFleetAtStation(62.5,75)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-bottommiddle w3-margin">
+					<span v-for="state in getFleetAtStation(75,87.5)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-bottomleft w3-margin">
+					<span v-for="state in getFleetAtStation(87.5,100)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+				</div>
+				<div class="w3-display-middle w3-container">
+					<p>Resonance: {{ r }}<br />Turns: {{ t }}</p>
+				</div>
 			</div>
-			<div class="w3-row">
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l3 m3 s3"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-			</div>
-			<div class="w3-row">
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l8 m8 s8"></div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-			</div>
-			<div class="w3-row">
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l8 m8 s8"></div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-			</div>
-			<div class="w3-row">
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l8 m8 s8"></div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-			</div>
-			<div class="w3-row">
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l3 m3 s3"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-				<div class="w3-col w3-border l2 m2 s2"><span v-bind:class="getBadgeStyles(state.g.w3)"><i class="fa fa-rocket"></i> {{ state.g.f }}</span> </div>
-			</div>
-			<p>Resonance: {{ r }}<br />Turns: {{ t }}</p>
+			<h2>DEMO UI</h2>
 			<div>Energy: 
 				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span> 
 			</div>
-			<div>Fleet: 
-				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+			<div>Fleet (Click to Increase): 
+				<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)" style="cursor:pointer;" @click="incState(state.ID)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 			</div>
 		</div>
 
 		<footer class="w3-container w3-theme-dark w3-bottom">
+			<p><a href="https://docs.google.com/document/d/1ct_VRuUf-W8i1QK29MTigpQbY1nFh4G7XWI_VgxJt8E/edit?usp=sharing" target="_blank">Game Design Google Doc</a></p>
 			<p class="">Inspired by Friends at the Table season: Twilight Mirage <a href="http://friendsatthetable.net/" target="_blank">Podcast Site</a>, <a href="http://friendsatthetable.cash/" target="_blank">Support Friends at the Table</a>, <a href="http://twilightmirage.wikia.com/" target="_blank">Twilight Mirage Wiki</a></p>
 			<p class="">All rights to Friends at the Table, the Twilight Mirage, Divines, and Axioms belong to their creators!</p>
 			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
@@ -75,6 +73,7 @@
 						t:0,// turn count
 						r:81,// starting resonance
 						o:81,// orbit size
+						oc:0,// orbit count
 						state:{
 							r:{ID:'r',e:1,f:1,w3:'w3-red'},
 							o:{ID:'o',e:1,f:1,w3:'w3-orange'},
@@ -89,16 +88,37 @@
 						p:[]// players
 					},
 					methods:{
-						getBadgeStyles:function(style){
+						incState:function(stateID){
+							stateID = stateID || '';
+							if(this.state.hasOwnProperty(stateID)){
+								this.state[stateID].e++;
+								this.state[stateID].f++;
+							}
+						},
+						spendEnergy:function(stateID){
+							stateID = stateID || '';
+							if(this.state.hasOwnProperty(stateID)){
+								this.state[stateID].e--;
+							}
+						},
+						getFleetAtStation:function(min,max){
+							if(!isNaN(min) && !isNaN(max)){
+								var pcg = this;
+								return _.filter(pcg.state,function(oState){
+									var pos = (oState.f/pcg.o % 1)*100;
+									return pos >= min && pos < max;
+								});
+							} else {
+								return [];
+							}
+						},
+						getBadgeStyles:function(style,score){
 							var oW3 = {'w3-badge':true};
 							if(typeof(style) === 'string') oW3[style] = true;
 							return oW3;
 						}
 					}
-				}),
-				spcgDB = {
-					
-				};
+				});
 				function deck(){
 					var count=0,deck={c:[]},aColors=_.pluck(spcgVue._data.state,'ID');
 					while(count < 27){
@@ -128,6 +148,9 @@
 				}
 				var randivines = ['Shock','Motivation','Service','Submission','Consideration','Pride','Customer service','Romance','Enthusiasm','Movement','Contentment','Hope','Helpfulness','Helpfulness','Wisdom','Idiosyncrasy','Kindness','Curiosity','Awe','Perseverance','Skill','Beauty','Democracy','Favoritism','Generosity','Confidence','Democracy','Despair','Sophistication','Inflation','Refreshment','Service','Imagination','Disquiet','Curiosity','Freedom','Joy','Freedom','Joy','Forgiveness','Sadness','Democracy','Hate','Elegance','Chaos','Opportunism','Luxury','Speculation','Humility','Anger','Reality','Loss','Inflation','Graciousness','Amazement','Unreality','Determination','Contentment','Impression','Sympathy','Speed','Knowledge','Opportunism','Wariness','Integrity','Love','Sleep','Trust','Perseverance','Truth','Misery','Envy','Integrity','Peculiarity','Coldness','Insanity','Tiredness','Chaos','Imagination','Homelessness','Democracy','Warmth','Law','Hurt','Opinion','Adoration','Confidence','Amazement','Sophistication','Faithfulness','Omen','Hearsay','Loss','Liberty','Clarity','Thought','Idea','Opinion','Determination','Communication','Jealousy','Thought','Friendship','Customer service','Evil','Homelessness','Dedication','Honor','Happiness','Tiredness','Romance','Brilliance','Worry','Kindness','Idea','Talent','Dexterity','Pain','Need','Romance','Death','Ego','Weakness','Sorrow','Helpfulness','Warmth','Peculiarity','Crime','Patriotism','Worry','Faith','Crime','Contentment','Misery','Peace','Enhancement','Compassion','Ability','Patience','Contentment','Artistry','Relief','Strength','Customer service','Consideration','Forgiveness','Thrill','Customer service','Curiosity','Weariness','Calm','Anxiety','Sophistication','Curiosity','Life','Idea','Law','Thought','Democracy','Awe','Intelligence','Belief','Ego','Disquiet','Law','Liberty','Wisdom','Strength','Power','Self-control','Luxury','Joy','Deceit','Strictness','Happiness','Movement','Defeat','Dictatorship','Thought','Freedom','Opportunism','Pleasure','Confidence','Curiosity','Confidence','Principle','Laughter','Omen','Faith','Curiosity','Luxury','Laughter','Liberty','Knowledge','Parenthood','Faithlessness','Kindness','Weariness','Brilliance','Riches','Disturbance','Pride','Graciousness','Loss','Love','Curiosity','Strength','Freedom','Warmth','Refreshment','Justice','Thrill','Imagination','Need','Artistry','Riches','Helpfulness','Omen','Unreality','Misery','Loyalty','Sorrow','Fascination','Impression','Principle','Chaos','Culture','Redemption','Sadness','Unemployment','Disquiet','Sanity','Charity','Life','Dedication','Opportunism','Imagination','Thrill','Adoration','Truth','Sadness','Wealth','Bravery','Service','Adventure','Parenthood','Worry','Confidence','Awe','Grief','Loss','Energy','Democracy','Excitement','Surprise','Omen','Liberty','Grief','Silliness','Tiredness','Memory','Need','Romance','Disbelief','Warmth','Self-control','Infatuation','Life','Hope','Sleep','Pride','Strength','Disbelief','Love','Determination','Movement','Love','Failure','Sleep','Apprehension','Adoration','Democracy','Victory','Compassion','Crime','Defeat','Customer service','Impression','Wariness','Compassion','Memory','Information','Love','Weariness','Coldness','Calm','Redemption','Sanity','Wit','Opinion','Knowledge','Graciousness','Misery','Sparkle','Fragility','Death','Faith','Culture','Life','Trust','Sympathy','Loss','Information','Misery','Compassion','Self-control','Opinion','Love','Success','Disturbance','Elegance','Patience','Confidence','Brutality','Enhancement','Fascination','Opinion','Riches','Dexterity','Opportunity','Adventure','Bravery','Contentment','Despair','Tiredness','Relief','Justice','Envy','Sensitivity','Beauty','Courage','Consideration','Freedom','Faithlessness','Reality','Brutality','Unemployment','Victory','Misery','Confidence','Frailty','Love','Speed','Customer service','Self-control','Sadness','Tiredness','Peace','Courage','Wealth','Forgiveness','Homelessness','Knowledge','Disquiet','Disturbance','Grief','Dreams','Adventure','Fascination','Courage','Hatred','Perseverance','Contentment','Talent','Customer service','Compassion','Honor','Sorrow','Hurt','Love','Uncertainty','Opportunism','Truth','Knowledge','Disbelief','Dreams','Hate','Unemployment','Grace','Anxiety','Ego','Crime','Service','Communication','Friendship','Disappointment','Faithlessness','Brilliance','Ego','Enhancement','Rumor','Compassion','Love','Helpfulness','Honesty','Anxiety','Dedication','Victory','Weakness','Compassion','Truth','Weakness','Communication','Dictatorship','Improvement','Integrity','Speculation','Culture','Curiosity','Belief','Customer service','Imagination','Kindness','Reality','Anger','Apprehension','Fragility','Hate','Loss','Liberty','Hope','Integrity','Excitement','Improvement','Talent','Kindness','Unreality','Trust','Patriotism','Strength','Brutality','Fear','Information','Culture','Faithlessness','Bravery','Riches','Disturbance','Culture','Peace','Freedom','Knowledge','Mercy','Life','Strictness','Opportunity','Despair','Talent','Service','Wariness','Uncertainty','Improvement','Unemployment','Peace','Motivation','Despair','Envy','Clarity','Misery','Deceit','Comfort','Satisfaction','Riches','Bravery','Reality','Anger','Courage','Communication','Grace','Wealth','Hurt','Need','Artistry','Failure','Freedom','Weakness','Insanity','Success','Enhancement','Consideration','Tolerance','Memory','Despair','Wariness','Hope','Brilliance','Goodness','Ability','Opportunism','Life','Patience','Democracy','Helplessness','Movement','Idea','Democracy','Humor','Silliness','Dictatorship','Disquiet','Brilliance','Hate','Love','Movement','Favoritism','Calm','Crime','Refreshment','Talent','Principle','Success','Helpfulness','Honesty','Anger','Unreality','Ability','Wisdom','Frailty','Favoritism','Dexterity','Speed','Customer service','Pain','Crime','Peace','Sparkle','Comfort','Helpfulness','Sympathy','Charity','Sorrow','Friendship','Relaxation','Opinion','Reality','Hurt','Coldness','Perseverance','Hope','Enthusiasm','Need','Faith','Riches','Humility','Fragility','Sparkle','Success','Kindness','Favoritism','Idiosyncrasy','Hearsay','Inflation','Shock','Sparkle','Energy','Impression','Faithfulness','Enhancement','Idea','Faith','Deceit','Friendship','Disbelief','Peculiarity','Rumor','Wealth','Sympathy','Trust','Kindness','Speed','Memory','Anger','Tiredness','Impression','Favoritism','Clarity','Stupidity','Worry','Adventure','Chaos','Surprise','Wealth','Artistry','Sorrow','Friendship','Maturity','Speed','Charity','Charity','Awe','Fucking Wrecking Shit Up','Hustle'];//https://www.getrandomthings.com/list-abstract-nouns.php
 				var APP = {
+					vue:function(){
+						return spcgVue;
+					},
 					dump:function(){
 						console.log([
 							deck()
