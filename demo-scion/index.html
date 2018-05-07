@@ -82,7 +82,7 @@
 					<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)" style="cursor:pointer;" @click="incState(state.ID)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
 				</div>
 			</div>
-			<div v-bind:class="getMenuStyles()"><div class="modal-content"><div class="w3-container w3-theme-dark">
+			<div v-bind:class="getMenuStyles()"><div class="modal-content"><div class="w3-container w3-deep-purple">
 				<span @click="menu=false" class="w3-button w3-display-topright">&times;</span>
 				<p><a href="https://docs.google.com/document/d/1ct_VRuUf-W8i1QK29MTigpQbY1nFh4G7XWI_VgxJt8E/edit?usp=sharing" target="_blank">Game Design Google Doc</a></p>
 				<p class="">Inspired by Friends at the Table season: Twilight Mirage <a href="http://friendsatthetable.net/" target="_blank">Podcast Site</a>, <a href="http://friendsatthetable.cash/" target="_blank">Support Friends at the Table</a>, <a href="http://twilightmirage.wikia.com/" target="_blank">Twilight Mirage Wiki</a></p>
