@@ -12,7 +12,7 @@
 		<title>Confluent Circuit - Procedural Card Game</title>
 
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-purple.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
 		<script src="https://use.fontawesome.com/1174070f0b.js"></script>
 		<style>
 		.pcg--hud .w3-row {height: 18vh;}
@@ -21,7 +21,7 @@
 	<body>
 		<div id="spcgapp">
 			<div class="w3-round" @click="menu=true"><i class="fa fa-bars fa-2x"></i></div>
-			<div class="pcg--hud w3-container w3-deep-purple w3-padding">
+			<div class="pcg--hud w3-container w3-highway-green w3-padding">
 				<div class="w3-row"><!--- TOP --->
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
 					<div class="w3-col s3 m3 l3">
@@ -36,7 +36,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(10,20)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar">
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-amber">
 						Resonance: {{ r }}
 					</div>
 					<div class="w3-col s3 m3 l3 w3-right-align">
@@ -47,7 +47,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(0,10)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar">Energy: 
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-amber">Energy: 
 						<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span>
 					</div>
 					<div class="w3-col s3 m3 l3 w3-right-align">
@@ -58,7 +58,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(90,100)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar">
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-amber">
 						Turns: {{ t }} | Orbits: {{ calculateOrbits() }}
 					</div>
 					<div class="w3-col s3 m3 l3 w3-right-align">
