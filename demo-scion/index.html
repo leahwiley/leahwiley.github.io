@@ -19,9 +19,9 @@
 		</style>
 	</head>
 	<body>
-		<div id="spcgapp">
+		<div id="spcgapp" class="w3-amber">
 			<div class="w3-round" @click="menu=true"><i class="fa fa-bars fa-2x"></i></div>
-			<div class="pcg--hud w3-container w3-highway-green w3-padding">
+			<div class="pcg--hud w3-container w3-highway-green w3-padding w3-circle">
 				<div class="w3-row"><!--- TOP --->
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
 					<div class="w3-col s3 m3 l3">
@@ -36,7 +36,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(10,20)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-amber">
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-deep-orange">
 						Resonance: {{ r }}
 					</div>
 					<div class="w3-col s3 m3 l3 w3-right-align">
@@ -47,7 +47,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(0,10)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-amber">Energy: 
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-deep-orange">Energy: 
 						<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)">{{ state.e }}</span>
 					</div>
 					<div class="w3-col s3 m3 l3 w3-right-align">
@@ -58,7 +58,7 @@
 					<div class="w3-col s3 m3 l3">
 						&nbsp;<span v-for="state in getFleetAtStation(90,100)" v-bind:class="getBadgeStyles(state.w3)"><i class="fa fa-rocket"></i> {{ state.f }}</span>
 					</div>
-					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-amber">
+					<div class="w3-col s6 m6 l6 w3-topbar w3-rightbar w3-border-deep-orange">
 						Turns: {{ t }} | Orbits: {{ calculateOrbits() }}
 					</div>
 					<div class="w3-col s3 m3 l3 w3-right-align">
