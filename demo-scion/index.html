@@ -16,12 +16,13 @@
 		<script src="https://use.fontawesome.com/1174070f0b.js"></script>
 		<style>
 		.pcg--hud .w3-row {height: 12vh;}
+		.pcg--hand .w3-badge {cursor:pointer;}
 		</style>
 	</head>
 	<body>
 		<div id="spcgapp" class="w3-amber">
 			<div class="w3-round w3-btn w3-display-topright" @click="menu=true"><i class="fa fa-bars fa-2x"></i></div>
-			<div class="pcg--hud w3-container w3-highway-green w3-padding w3-circle">
+			<div class="pcg--hud w3-container w3-highway-green w3-padding w3-margin w3-circle">
 				<div class="w3-row"><!--- TOP --->
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
 					<div class="w3-col s3 m3 l3">
@@ -76,7 +77,7 @@
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
 				</div>
 			</div>
-			<div class="w3-container w3-margin pcg--hand">
+			<div class="w3-container pcg--hand">
 				<div v-for="card in hand" class="w3-border w3-padding">{{ card.name }} <span v-for="color in card.colors" v-bind:class="getBadgeStyles(state[color].w3)"><i class="fa fa-sun-o"></i></span></div>
 			</div>
 			<div class="w3-container w3-black w3-text-green w3-topbar w3-border-green">
@@ -91,7 +92,7 @@
 				<p class="">Inspired by Friends at the Table season: Twilight Mirage <a href="http://friendsatthetable.net/" target="_blank">Podcast Site</a>, <a href="http://friendsatthetable.cash/" target="_blank">Support Friends at the Table</a>, <a href="http://twilightmirage.wikia.com/" target="_blank">Twilight Mirage Wiki</a></p>
 				<p class="">All rights to Friends at the Table, the Twilight Mirage, Divines, and Axioms belong to their creators!</p>
 				<p class="">Randomized Non-canonical Card Names Sourced From: <a href="https://www.getrandomthings.com/list-abstract-nouns.php" target="_target">Get Random Things.com: Random Abstract Nouns Generator</a></p>
-				<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a></p>
+				<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://vuejs.org/" target="_blank">Vue.js</a>, <a href="https://fontawesome.com/" target="_blank">Font Awesome</a></p>
 				<p class="">Developed by <a href="https://nathanielwiley.github.io" target="_blank">Assembled Realities</a>, 2018 Licensed under <a href="https://choosealicense.com/licenses/mit/" target="_blank">MIT License</a></p>
 			</div></div></div>
 		</div>
