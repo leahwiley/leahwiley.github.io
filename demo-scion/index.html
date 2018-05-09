@@ -78,7 +78,10 @@
 				</div>
 			</div>
 			<div class="w3-container pcg--hand">
-				<div v-for="card in hand" class="w3-border w3-padding">{{ card.name }} <span v-for="color in card.colors" v-bind:class="getBadgeStyles(state[color].w3)"><i class="fa fa-sun-o"></i></span></div>
+				<div v-for="card in hand" class="w3-border w3-padding">
+					{{ card.name }} 
+					<span v-for="color in card.colors" v-bind:class="getBadgeStyles(state[color].w3)"><i class="fa fa-sun-o"></i></span>
+				</div>
 			</div>
 			<div class="w3-container w3-black w3-text-green w3-topbar w3-border-green">
 				<h2>DEBUG UI</h2>
@@ -174,7 +177,7 @@
 						drawCard:function(){
 							if(this.hand.length >= 0 && this.hand.length < 3){
 								var aColors=_.pluck(this.state,'ID'),
-									oCard = {paid:[],colors:[],
+									oCard = {charged:[],colors:[],
 									name:randivines[_.random(randivines.length-1)]
 								};
 								oCard.colors.push(aColors[_.random(8)]);
@@ -187,6 +190,28 @@
 								oCard.colors.push(aColors[_.random(8)]);
 								oCard.colors.push(aColors[_.random(8)]);
 								this.hand.push(oCard);
+							}
+						},
+						charge:function(cardIdx,color){
+							if(!isNaN(cardIdx) && typeof(color) === 'string'){
+								var pcg = this;
+								if(cardIdx >= 0 && cardIdx < pcg.hand.length){
+									var oCard = pcg.hand[cardIdx];
+									if(_.contains(oCard.colors,color)){
+
+									}
+								}
+							}
+						},
+						discharge:function(carIdx,color){
+							if(!isNaN(cardIdx) && typeof(color) === 'string'){
+								var pcg = this;
+								if(cardIdx >= 0 && cardIdx < pcg.hand.length){
+									var oCard = pcg.hand[cardIdx];
+									if(_.contains(oCard.charged,color)){
+
+									}
+								}
 							}
 						}
 					}
