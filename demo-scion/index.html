@@ -78,6 +78,7 @@
 				</div>
 			</div>
 			<div v-if="r > 0" class="w3-container pcg--hand">
+				<div>Click 3 Colors to Play a Card.</div>
 				<div v-for="card in hand" class="w3-border w3-blue-grey w3-margin-bottom">
 					<span v-if="canPlay(card.idx)" class="w3-btn w3-gray" @click="playCard(card.idx)">{{ card.name }} </span>
 					<span v-else class="w3-btn">{{ card.name }} </span>
