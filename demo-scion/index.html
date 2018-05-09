@@ -77,16 +77,11 @@
 					<div class="w3-col s3 m3 l3">&nbsp;</div>
 				</div>
 			</div>
-			<div class="w3-container pcg--hand">
-				<div v-for="card in hand" class="w3-border w3-padding">
-					{{ card.name }} 
-					<span v-for="color in card.colors" v-bind:class="getBadgeStyles(state[color].w3)"><i class="fa fa-sun-o"></i></span>
-				</div>
-			</div>
-			<div class="w3-container w3-black w3-text-green w3-topbar w3-border-green">
-				<h2>DEBUG UI</h2>
-				<div>Fleet (Click to Increase): 
-					<span v-for="state in state" v-bind:class="getBadgeStyles(state.w3)" style="cursor:pointer;" @click="incState(state.ID)"><i class="fa fa-rocket"></i> {{ state.f }}</span> 
+			<div v-if="r > 0" class="w3-container pcg--hand">
+				<div v-for="card in hand" class="w3-border w3-blue-grey w3-margin-bottom">
+					<span v-if="canPlay(card.idx)" class="w3-btn w3-gray" @click="playCard(card.idx)">{{ card.name }} </span>
+					<span v-else class="w3-btn">{{ card.name }} </span>
+					<span v-for="color in card.colors" v-bind:class="getBadgeStyles(state[color.ID].w3,color.charge)" @click="charge(card.idx,color.idx)"><i v-bind:class="getEnergyStyles(color.charge)"></i></span>
 				</div>
 			</div>
 			<div v-bind:class="getMenuStyles()"><div class="modal-content"><div class="w3-container w3-deep-purple">
@@ -103,14 +98,14 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 		<script>
-			var spcg = function(){
+			(function(){
 				var spcgVue = new Vue({
 					el:'#spcgapp',
 					data:{
 						menu:false,// show menu?
 						t:0,// turn count
 						r:81,// starting resonance
-						o:81,// orbit size
+						o:27,//81,// orbit size
 						state:{
 							r:{ID:'r',e:1,f:1,w3:'w3-red'},
 							o:{ID:'o',e:1,f:1,w3:'w3-orange'},
@@ -135,7 +130,11 @@
 						spendEnergy:function(stateID){
 							stateID = stateID || '';
 							if(this.state.hasOwnProperty(stateID)){
-								this.state[stateID].e--;
+								if(this.state[stateID].e > 0){
+									this.state[stateID].e--;
+								} else {
+									this.r--;
+								}
 							}
 						},
 						calculateOrbits:function(){
@@ -160,9 +159,19 @@
 								return [];
 							}
 						},
-						getBadgeStyles:function(style,score){
+						getBadgeStyles:function(style,isCharged){
 							var oW3 = {'w3-badge':true};
 							if(typeof(style) === 'string') oW3[style] = true;
+							isCharged = isCharged || false;
+							if(isCharged !== true) isCharged = false;
+							if(isCharged) oW3['w3-border'] = true;
+							return oW3;
+						},
+						getEnergyStyles:function(isCharged){
+							isCharged = isCharged || false;
+							if(isCharged !== true) isCharged = false;
+							var oW3 = {'fa':true,'fa-sun-o':true};
+							if(isCharged) oW3['fa-spin'] = true;
 							return oW3;
 						},
 						getMenuStyles:function(){
@@ -177,39 +186,49 @@
 						drawCard:function(){
 							if(this.hand.length >= 0 && this.hand.length < 3){
 								var aColors=_.pluck(this.state,'ID'),
-									oCard = {charged:[],colors:[],
-									name:randivines[_.random(randivines.length-1)]
-								};
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
-								oCard.colors.push(aColors[_.random(8)]);
+									oCard = {idx:this.hand.length,colors:[],name:randivines[_.random(randivines.length-1)]};
+								for(var i=0;i < 9;i++){
+									oCard.colors.push({idx:i,ID:aColors[_.random(8)],charge:false});
+								}
 								this.hand.push(oCard);
 							}
 						},
-						charge:function(cardIdx,color){
-							if(!isNaN(cardIdx) && typeof(color) === 'string'){
-								var pcg = this;
-								if(cardIdx >= 0 && cardIdx < pcg.hand.length){
-									var oCard = pcg.hand[cardIdx];
-									if(_.contains(oCard.colors,color)){
-
-									}
+						canPlay:function(cardIdx){
+							var bPlay = false;
+							if(!isNaN(cardIdx)){
+								if(cardIdx < this.hand.length){
+									var oCard = this.hand[cardIdx];
+									if(_.filter(oCard.colors,function(color){return color.charge;}).length === 3) bPlay = true;
+								}
+							}
+							return bPlay;
+						},
+						playCard:function(cardIdx){
+							if(!isNaN(cardIdx)){
+								if(cardIdx < this.hand.length){
+									var pcg=this,oCard=this.hand[cardIdx];
+									_.each(oCard.colors,function(color){
+										if(color.charge){
+											pcg.spendEnergy(color.ID);
+										} else {
+											pcg.incState(color.ID);
+										}
+									});
+									pcg.calculateResonance();
+									pcg.hand.splice(oCard.idx,1);
+									pcg.hand[0].idx = 0;
+									pcg.hand[1].idx = 1;
+									pcg.drawCard();
+									pcg.t++;
+									if(pcg.r <= 0) alert('Game Over! You Played '+pcg.t+' Turns and Achieved '+pcg.calculateOrbits()+' Orbits!');
 								}
 							}
 						},
-						discharge:function(carIdx,color){
-							if(!isNaN(cardIdx) && typeof(color) === 'string'){
-								var pcg = this;
-								if(cardIdx >= 0 && cardIdx < pcg.hand.length){
-									var oCard = pcg.hand[cardIdx];
-									if(_.contains(oCard.charged,color)){
-
+						charge:function(cardIdx,colorIdx){
+							if(!isNaN(cardIdx) && !isNaN(colorIdx)){
+								if(cardIdx < this.hand.length){
+									if(colorIdx < this.hand[cardIdx].colors.length){
+										this.hand[cardIdx].colors[colorIdx].charge = !this.hand[cardIdx].colors[colorIdx].charge;
 									}
 								}
 							}
@@ -220,18 +239,7 @@
 				spcgVue.drawCard();
 				spcgVue.drawCard();
 				spcgVue.drawCard();
-				var APP = {
-					vue:function(){
-						return spcgVue;
-					},
-					dump:function(){
-						console.log([
-							deck()
-						]);
-					}
-				};
-				return APP;
-			}();
+			})();
 		</script>
 	</body>
 </html>
