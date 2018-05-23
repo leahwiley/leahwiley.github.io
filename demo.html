@@ -78,15 +78,15 @@
 			</ul>
 		</div><br /><br />
 
-		<footer class="w3-container w3-theme-dark w3-bottom">
+		<footer class="w3-container w3-theme-dark ">
 			<!--<h3>Footer</h3>-->
-			<p class="">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://www.w3schools.com/w3js/" target="_blank">W3.JS</a></p>
-			<p auw3-slide-stop=".AuW3-auto-slide">STOP</p>
-			<p auw3-slide-start=".AuW3-auto-slide">GO</p>
-			<p auw3-slide-speed=".AuW3-auto-slide,1000">ACCELERATE</p>
-			<p auw3-slide-next=".AuW3-auto-slide">FOREWARD</p>
-			<p auw3-slide-previous=".AuW3-auto-slide">BACK</p>
-			<p auw3-slide-set=".AuW3-auto-slide,4">Slide 4</p>
+			<p class="w3-border">Powered by <a href="https://www.w3schools.com/w3css/" target="_blank">W3.CSS</a>, <a href="https://www.w3schools.com/w3js/" target="_blank">W3.JS</a></p>
+			<p style="border:1px solid transparent;" auw3-slide-stop=".AuW3-auto-slide">STOP</p>
+			<p style="border:1px solid transparent;" auw3-slide-start=".AuW3-auto-slide">GO</p>
+			<p style="border:1px solid transparent;" auw3-slide-speed=".AuW3-auto-slide,1000">ACCELERATE</p>
+			<p style="border:1px solid transparent;" auw3-slide-next=".AuW3-auto-slide">FOREWARD</p>
+			<p style="border:1px solid transparent;" auw3-slide-previous=".AuW3-auto-slide">BACK</p>
+			<p style="border:1px solid transparent;" auw3-slide-set=".AuW3-auto-slide,4">Slide 4</p>
 			<!--<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
 				<span class="w3-text w3-padding">Go To Top</span>&nbsp;   
 				<a class="w3-text-white" href="#summit"><span class="w3-xlarge">
@@ -103,20 +103,34 @@
 		================================================== -->
 		<script src="../conpigurator/conpigurator.js"></script>
 		<script src="../bittacle/bittacle.js"></script>
-		<script src="../AUW3/auw3.js"></script>
-		<script src="js/wks.min.js"></script>
+		<!--<script src="../AUW3/auw3.js"></script>
+		<script src="js/wks.min.js"></script>-->
 		<!--<script src="js/scripts.min.js"></script>-->
-		<script>
+		<p id="conpigurateMe">Background Color From First Input</p>
+<input id="conpigurateU" type="text">
+<p id="conpigurateMe2">Text Color From First Input and Background Color From Second Input (Hexadecimal values ONLY)</p>
+<input id="conpigurateHexOnly" type="text">
+<script>
 	// CONSTRUCTOR with chained target assignment
 	var myConpigurator = new Conpigurator('conpigurateU')
 		.addTarget('conpigurateMe','backgroundColor')
 		.addTarget('conpigurateMe2','color');
+
+	// CONSTRUCTOR with second argument that forces the conpigurator to only accept Hexadecimal values
+	var myHexOnlyConpigurator = new Conpigurator('conpigurateHexOnly',true);
 	
 	// Explicit target assignment
-	myConpigurator.addTarget('conpigurateMe3','{CSS color property}');
-	
+	myHexOnlyConpigurator.addTarget('conpigurateMe2','backgroundColor');
+
+	// Query Selector Target Assignment 
+	myHexOnlyConpigurator.addTarget('p','borderColor');// By tag
+	myHexOnlyConpigurator.addTarget('.w3-container','backgroundColor');// By tag
+		
 	// Manual trigger application of myConpigurator color to targets
 	myConpigurator.update();
+
+	// Manually toggle application of myConpigurator color to targets
+	myHexOnlyConpigurator.hexOnly(true);// When passed a boolean, it expressly sets the Conpigurator hexLock property. Given any other (including no) arguments, it inverts the hexLock property.
 </script>
 	</body>
 </html>
