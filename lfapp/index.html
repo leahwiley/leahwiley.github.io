@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<!--<link rel="icon" href="../../favicon.ico">-->
+		
+		<title></title>
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+		<style></style>
+	</head>
+	<body class="w3-black">
+		<div id="zrapp" class="w3-center">
+			<div class="w3-card" v-for="player in aPlayers">
+				<h3>{{ player.name }}</h3>
+				<div>Cash: ${{ player.money }} | Debt: ${{ player.loans*25000 }}</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script>
+			lfapp = (function(){
+				var aCards = [0,1,2,3,4,5,6,7,8,9,15],
+					aPhrases = [
+						"I'VE GOT BRAAAAAAAINS!",
+						"DO YOU WANT A PIECE OF ME?!"
+					];
+				var zrVue = new Vue({
+					el:'#zrapp',
+					data:{
+						round:1,
+						rounds:5,
+						hand:4,
+						aPlayers:[]
+					},
+					methods:{
+						addPlayer:function(name){
+							name = name || '';
+							if(typeof(name) === 'string' && name.length > 0) this.aPlayers.push(name);
+						},
+						getShout:function(){
+							return aPhrases[_.random(aPhrases.length-1)];
+						},
+						getCards:function(){
+							return aCards;
+						},
+						getPlayers:function(){
+							return this.aPlayers;
+						},
+						addPlayer:function(oP){
+							var nP = {
+								name:'',
+								spouse:'',
+								color:'',
+								children:[],
+								degree:false,
+								carInsured:false,
+								homeInsured:false,
+								salary:0,
+								taxes:0,
+								loans:0,
+								money:10000,
+								tiles:0,
+								payDay:function(){
+									this.earn(this.salary);
+								},
+								payTaxes:function(){
+									this.spend(this.taxes);
+								},
+								earn:function(m){
+									if(!isNan(m)){
+										this.money += m;
+									}
+								},
+								spend:function(m){
+									if(!isNan(m)){
+										if(this.money >= m){
+											this.money -= m;
+										} else {
+											alert('You must take out a loan before spending $'+m);
+										}
+									}
+								},
+								takeLoan:function(){
+									this.earn(20000);
+									this.loans++;
+								},
+								payLoan:function(){
+									if(this.money >= 20000){
+										this.spend(20000);
+										this.loans--;
+									}
+								},
+								getTile:function(){
+									this.tiles++;
+								},
+								college:function(){
+									if(!this.degree){
+										this.loans += 5;
+										this.degree = true;
+									}
+								},
+								getCarInsurance:function(){
+									this.spend(10000);
+									this.carInsured = true;
+								},
+								getHomeInsurance:function(m){
+
+								}
+							};
+							if(_.isObject(oP)) _.extendOwn(nP,oP);
+							this.aPlayers.push(nP);
+						}
+					}
+				});
+				return zrVue;
+			})();
+			lfapp.addPlayer({name:'Elijah'});
+			lfapp.addPlayer({name:'Daddy'});
+			var Elijah = lfapp.aPlayers[0];
+			var Daddy = lfapp.aPlayers[1];
+		</script>
+	</body>
+</html>
